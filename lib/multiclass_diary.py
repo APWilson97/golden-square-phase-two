@@ -1,4 +1,5 @@
-from lib.diary_entry_2 import *
+from lib.multiclass_diary_entry import *
+from lib.multiclass_phone_number import PhoneNumber
 
 class Diary:
     def __init__(self):
@@ -57,3 +58,12 @@ class Diary:
             if len(entry.contents) <= most_amount_of_words_read:
                 best_entry = entry
         return entry
+    
+    def list_phone_numbers(self):
+        entries_with_phone_numbers = []
+        for entry in self._diary:
+            if entry.phone_number == None:
+                continue
+            elif entry.phone_number.has_a_phone_number_check() == True:
+                entries_with_phone_numbers.append(entry)
+        return entries_with_phone_numbers
